@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Professional Headshots with AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 50px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #3498db;
+            font-size: 2.5em;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #333;
+            font-size: 2em;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 200px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Professional Headshots with AI</h1>
+        
+        <input type="file" id="fileUpload" onchange="previewFile()">
+        
+        <button onclick="processImage()">Process</button>
+
+        <div>
+            <h2>Original</h2>
+            <img id="preview" style="max-width: 200px;">
+        </div>
+
+        <div class="image-container">
+            <h2>Processed Options</h2>
+            <img id="output1" style="display: none;" src="processed_image1.jpg">
+            <img id="output2" style="display: none;" src="processed_image2.jpg">
+            <img id="output3" style="display: none;" src="processed_image3.jpg">
+        </div>
+    </div>
+    
+    <script>
+        function previewFile() {
+            const preview = document.querySelector('#preview');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // convert image file to base64 string
+                preview.src = reader.result;
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function processImage() {
+            document.getElementById('output1').style.display = 'block';
+            document.getElementById('output2').style.display = 'block';
+            document.getElementById('output3').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
